@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ECC38E40-BC1C-4310-87AF-07EB6F9433BA}</ProjectGuid>
+    <ProjectGuid>{4851405A-7F70-4195-B796-4CEE71678707}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WestWindSystem</RootNamespace>

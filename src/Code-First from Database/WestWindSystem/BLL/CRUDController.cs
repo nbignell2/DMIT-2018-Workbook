@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WestWindSystem.DAL;
 using WestWindSystem.Entities;
 
 namespace WestWindSystem.BLL
@@ -26,18 +27,18 @@ namespace WestWindSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Supplier> ListSuppliers()
         {
-            using (var context = new WestWindContext())
+            using(var context = new WestWindContext())
             {
                 return context.Suppliers.ToList();
             }
         }
         #endregion
 
-        #region Category CRUD
+        #region Categories CRUD
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<Category> Categories()
+        public List<Category> ListCategories()
         {
-            using (var context = new WestWindContext())
+            using(var context = new WestWindContext())
             {
                 return context.Categories.ToList();
             }
@@ -46,15 +47,13 @@ namespace WestWindSystem.BLL
 
         #region Addresses CRUD
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<Address> Addresses()
+        public List<Address> ListAddresses()
         {
-            using (var context = new WestWindContext())
+            using(var context = new WestWindContext())
             {
                 return context.Addresses.ToList();
             }
         }
-
         #endregion
-
     }
 }
