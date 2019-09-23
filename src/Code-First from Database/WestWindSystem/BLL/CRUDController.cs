@@ -29,7 +29,7 @@ namespace WestWindSystem.BLL
         {
             using(var context = new WestWindContext())
             {
-                // .Include(string) will "eage load" the Address information
+                // .Include(string) will "eager load" the Address information
                 // for the supplier.
                 return context.Suppliers.Include(nameof(Supplier.Address)).ToList();
             }
@@ -38,9 +38,33 @@ namespace WestWindSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public void AddSupplier(Supplier item)
         {
-            using (var context = new WestWindContext())
+            using(var context = new WestWindContext())
             {
                 context.Suppliers.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public void UpdateSupplier(Supplier item)
+        {
+            using(var context = new WestWindContext())
+            {
+                var existing = context.Entry(item);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete)]
+
+        public void DeleteSupplier(Supplier item)
+        {
+            using (var context = new WestWindContext())
+            {
+                var existing = context.Suppliers.Find
+                    (item.SupplierID);
+                context.Suppliers.Remove(existing);
                 context.SaveChanges();
             }
         }
