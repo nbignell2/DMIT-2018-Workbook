@@ -18,9 +18,6 @@ namespace WebAppCRUD.Admin
         {
             MessageUserControl.HandleDataBoundException(e);
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 81c754166f71fe9effe0152abe310487fd806349
     }
 }

@@ -48,11 +48,8 @@ namespace WestWindSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void UpdateSupplier(Supplier item)
         {
-<<<<<<< HEAD
             using (var context = new WestWindContext())
-=======
-            using(var context = new WestWindContext())
->>>>>>> 81c754166f71fe9effe0152abe310487fd806349
+
             {
                 var existing = context.Entry(item);
                 existing.State = System.Data.Entity.EntityState.Modified;
@@ -61,20 +58,13 @@ namespace WestWindSystem.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
-<<<<<<< HEAD
-=======
 
->>>>>>> 81c754166f71fe9effe0152abe310487fd806349
         public void DeleteSupplier(Supplier item)
         {
             using (var context = new WestWindContext())
             {
-<<<<<<< HEAD
+
                 var existing = context.Suppliers.Find(item.SupplierID);
-=======
-                var existing = context.Suppliers.Find
-                    (item.SupplierID);
->>>>>>> 81c754166f71fe9effe0152abe310487fd806349
                 context.Suppliers.Remove(existing);
                 context.SaveChanges();
             }
