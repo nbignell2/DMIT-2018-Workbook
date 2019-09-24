@@ -1,7 +1,6 @@
 <Query Kind="Expression">
   <Connection>
     <ID>9f795fec-6525-43c5-bbd0-2819df27768a</ID>
-    <Persist>true</Persist>
     <Server>.</Server>
     <Database>WestWind</Database>
   </Connection>
@@ -10,8 +9,8 @@
 // List all the customers and the name, qty & unit price of each
 // of the items they purchased.
 from data in Customers
-//  Customer   Customer[]
-select new
+//  Customer   Table<Customer>
+select new //TODO: Place class name here
 {
     CompanyName = data.CompanyName,
     Sales = from purchase in data.Orders

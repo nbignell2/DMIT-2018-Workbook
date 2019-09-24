@@ -29,7 +29,7 @@ namespace WestWindSystem.BLL
         {
             using(var context = new WestWindContext())
             {
-                // .Include(string) will "eage load" the Address information
+                // .Include(string) will "eager load" the Address information
                 // for the supplier.
                 return context.Suppliers.Include(nameof(Supplier.Address)).ToList();
             }
@@ -38,9 +38,44 @@ namespace WestWindSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public void AddSupplier(Supplier item)
         {
-            using (var context = new WestWindContext())
+            using(var context = new WestWindContext())
             {
                 context.Suppliers.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public void UpdateSupplier(Supplier item)
+        {
+<<<<<<< HEAD
+            using (var context = new WestWindContext())
+=======
+            using(var context = new WestWindContext())
+>>>>>>> 81c754166f71fe9effe0152abe310487fd806349
+            {
+                var existing = context.Entry(item);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete)]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 81c754166f71fe9effe0152abe310487fd806349
+        public void DeleteSupplier(Supplier item)
+        {
+            using (var context = new WestWindContext())
+            {
+<<<<<<< HEAD
+                var existing = context.Suppliers.Find(item.SupplierID);
+=======
+                var existing = context.Suppliers.Find
+                    (item.SupplierID);
+>>>>>>> 81c754166f71fe9effe0152abe310487fd806349
+                context.Suppliers.Remove(existing);
                 context.SaveChanges();
             }
         }
