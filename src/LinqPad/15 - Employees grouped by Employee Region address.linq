@@ -1,13 +1,15 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>05a2444e-14ea-4451-ad3d-3398e9ff7898</ID>
+    <ID>bafaf330-32cb-432e-af33-e5bdf4070172</ID>
+    <Persist>true</Persist>
     <Server>.</Server>
     <Database>WestWind</Database>
+    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
-// Display the Employees, grouped by the region in which the employee lives. 
-//Show the employee's first name, last name, and job title as separate properties within each group.
+// B) List all the Customers by Company Name. Include the Customer's company name, contact name, and other contact information in the result.
+
 from person in Employees
 group person by person.Address.Region into EmployeeGroups
 select new
