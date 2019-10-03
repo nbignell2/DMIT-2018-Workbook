@@ -49,7 +49,6 @@ namespace WestWindSystem.BLL
         public void UpdateSupplier(Supplier item)
         {
             using (var context = new WestWindContext())
-
             {
                 var existing = context.Entry(item);
                 existing.State = System.Data.Entity.EntityState.Modified;
@@ -58,12 +57,10 @@ namespace WestWindSystem.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
-
         public void DeleteSupplier(Supplier item)
         {
             using (var context = new WestWindContext())
             {
-
                 var existing = context.Suppliers.Find(item.SupplierID);
                 context.Suppliers.Remove(existing);
                 context.SaveChanges();
@@ -89,6 +86,38 @@ namespace WestWindSystem.BLL
             using(var context = new WestWindContext())
             {
                 return context.Addresses.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Insert)]
+        public void AddAddress(Address item)
+        {
+            using (var context = new WestWindContext())
+            {
+                context.Addresses.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public void UpdateAddress(Address item)
+        {
+            using (var context = new WestWindContext())
+            {
+                var existing = context.Entry(item);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete)]
+        public void DeleteAddress(Address item)
+        {
+            using (var context = new WestWindContext())
+            {
+                var existing = context.Addresses.Find(item.AddressID);
+                context.Addresses.Remove(existing);
+                context.SaveChanges();
             }
         }
         #endregion
