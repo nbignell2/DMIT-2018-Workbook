@@ -1,9 +1,10 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>502dd813-ceef-4a93-8663-148ad56997b5</ID>
+    <ID>39df7e4c-9915-44a9-85d8-ceb3950131b4</ID>
     <Persist>true</Persist>
-    <Server>.</Server>
+    <Server>DESKTOP-3OGGLR5\SQLEXPRESS</Server>
     <Database>Chinook</Database>
+    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
@@ -125,34 +126,3 @@ select new
 							  select t).Count()
 			  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
