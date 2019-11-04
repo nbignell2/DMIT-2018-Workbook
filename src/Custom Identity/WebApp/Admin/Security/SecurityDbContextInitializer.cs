@@ -71,11 +71,11 @@ namespace WebApp.Admin.Security
                     EmailConfirmed = true,
                     PersonId = person.PersonID
                 };
-                result = userManager.Create(user, AdminPassword);
+                result = userManager.Create(user, TempPassword);
                 if (result.Succeeded)
                 {
                     var userId = userManager.FindByName(user.UserName).Id;
-                    userManager.AddToRole(userId, AdminUserName);
+                    userManager.AddToRole(userId, UserRole);
                 }
 
             }
