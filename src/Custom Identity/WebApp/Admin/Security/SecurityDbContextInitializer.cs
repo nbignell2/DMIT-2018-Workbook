@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApp.Models;
+using static WebApp.Admin.Security.Settings;
 
 // You can learn about Database Initialization Strategies in EF6 via
 // http://www.entityframeworktutorial.net/code-first/database-initialization-strategy-in-code-first.aspx
@@ -24,17 +25,16 @@ namespace WebApp.Admin.Security
             //To "seed" a database is to provide it with some initial data
             // when the databaase is created
 
-            #region Seed the security roles
+            #region Seed the security rolesC:\Users\nbignell2\Documents\GitHub\DMIT-2018-Workbook\src\Custom Identity\WebApp\Web.config
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             //The RoleManager<T> and RoleStore<T> are BLL classes that give flexibility 
             // to the design/structure of how we're using Asp.Net identity.
             // The identityrole is an entity class that represents a security role
 
 
-            // Hard coded security roles (move later on)
-            roleManager.Create(new IdentityRole { Name = "Administrators" });
-            roleManager.Create(new IdentityRole { Name = "Registered Users" });
 
+            foreach (var role in DefaultSecurityRoles)
+                roleManager.Create(new IdentityRole { Name = role });
             #endregion
 
 
@@ -56,7 +56,7 @@ namespace WebApp.Admin.Security
                 // Get the Id that was generated for the user we created/added
                 var found = userManager.FindByName("WebAdmin").Id;
                 // Add the user to the Administrators role
-                userManager.AddToRole(found, "Administrators");
+                userManager.AddToRole(found, AdminRole);
             }
 
             // Create the other user accounts for all the other people in my demo database
@@ -75,7 +75,7 @@ namespace WebApp.Admin.Security
                 if (result.Succeeded)
                 {
                     var userId = userManager.FindByName(user.UserName).Id;
-                    userManager.AddToRole(userId, "Registered Users");
+                    userManager.AddToRole(userId, UserRole);
                 }
 
             }
