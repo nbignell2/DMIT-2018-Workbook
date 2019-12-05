@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderShipping.aspx.cs" Inherits="WebApp.Sales.OrderShipping" %>
 
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1 class="page-header">Order Shipping</h1>
 
@@ -10,6 +13,8 @@
                      (not wrapped in any HTML) -->
                 <asp:Literal ID="SupplierInfo" runat="server" />
             </p>
+
+            <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
             <asp:ListView ID="CurrentOrders" runat="server"
                 DataSourceID="OrdersDataSource"
@@ -55,7 +60,7 @@
                                     <asp:BoundField DataField="Outstanding" HeaderText="Outstanding" />
                                     <asp:TemplateField HeaderText="Ship Quantity">
                                         <ItemTemplate>
-                                            <asp:HiddenField ID="ProdID" runat="server"
+                                            <asp:HiddenField ID="ProdId" runat="server"
                                                 Value="<%# Item.ProductId %>" />
                                             <asp:TextBox ID="ShipQuantity" runat="server" />
                                         </ItemTemplate>
